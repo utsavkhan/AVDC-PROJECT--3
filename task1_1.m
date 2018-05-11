@@ -15,3 +15,27 @@ H1 = tf([0,2*zeta1*w_n,w_n^2],[1,2*zeta1*w_n,w_n^2]);
 bode(H,H1);
 
 
+%% task 1.3
+
+t = 1:0.01:10;
+excitation_sin = 0.05*sin(3*t);
+
+figure()
+plot(t,excitation_sin)
+
+figure()
+lsim(H,excitation_sin,t) % sine excitation
+
+figure()
+impulse(H,1) % impulse excitation
+
+figure()
+
+
+
+clear zeta
+
+c_p = 5;
+zeta= c_p/2*sqrt(k_p*m_p);
+
+
