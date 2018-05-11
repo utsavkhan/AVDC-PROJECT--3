@@ -10,8 +10,8 @@ zeta1 = c_p1/2*sqrt(k_p*m_p);
 %%TASK 1.3
 H = tf([0,2*zeta*w_n,w_n^2],[1,2*zeta*w_n,w_n^2]);
 H1 = tf([0,2*zeta1*w_n,w_n^2],[1,2*zeta1*w_n,w_n^2]);
-% fr= 0:0.01:100;
-% [mag,phase,wout] = bode(H1,fr);
-bode(H,H1);
+fr= 0:0.01:100;
+[mag,phase,wout] = bode(H,fr);
+bode(H)
 
 
