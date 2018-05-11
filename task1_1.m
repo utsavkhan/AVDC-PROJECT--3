@@ -31,8 +31,8 @@ impulse(H*0.05,1) % impulse excitation
 
 w = 0:0.1:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
-figure()
-semilogy(lsim(H,PSD,..)))
+% figure()
+% semilogy(lsim(H,PSD,..)))
 
 clear zeta
 
