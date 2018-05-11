@@ -27,11 +27,10 @@ figure()
 lsim(H,excitation_sin,t) % sine excitation
 
 figure()
-impulse(H,1) % impulse excitation
+impulse(H*0.05,1) % impulse excitation
 
 figure()
-
-
+semilogy()
 
 clear zeta
 
