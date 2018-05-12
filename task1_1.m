@@ -17,8 +17,8 @@ H1 = tf([0,2*zeta1*w_n,w_n^2],[1,2*zeta1*w_n,w_n^2]);
 
 %% task 1.3
 
-% t = 1:0.01:10;
-% excitation_sin = 0.05*sin(3*t);
+t = 1:0.01:10;
+excitation_sin = 0.05*sin(3*t);
 % 
 % figure()
 % plot(t,excitation_sin)
