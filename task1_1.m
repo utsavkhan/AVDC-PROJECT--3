@@ -29,10 +29,15 @@ lsim(H,excitation_sin,t) % sine excitation
 figure()
 impulse(H*0.05,1) % impulse excitation
 
-w = 0:0.1:25;
+w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+semilogy(PSD)
+
+%[timeseries, time] = TimeseriesFromPSD(PSD, 10, 10);
+%plot(time,timeseries)
+
 % figure()
-% semilogy(lsim(H,PSD,..)))
+%lsim(H,PSD,..)
 
 clear zeta
 
