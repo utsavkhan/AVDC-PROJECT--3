@@ -39,7 +39,7 @@ hold on;
 
 % impulse(H*0.05,1) % impulse excitation
 w_calc= sqrt((k_p+d_p)/m_p);
-zeta_calc = d_d / 2*m_p*w_n;
+zeta_calc = d_d / (2*m_p*w_n);
 % utsav(1,coeff)=d_d;
 % utsav(2,coeff)=d_p;
 %  end
