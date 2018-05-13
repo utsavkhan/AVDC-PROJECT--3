@@ -31,7 +31,8 @@ impulse(H*0.05,1) % impulse excitation
 
 w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
-semilogy(PSD)
+RespPSD = H*PSD;
+
 
 %[timeseries, time] = TimeseriesFromPSD(PSD, 10, 10);
 %plot(time,timeseries)
