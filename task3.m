@@ -11,13 +11,10 @@ c_p = 0.4; %Ns/m
 k_p = 6.32; %N/m
 w_n = sqrt(k_p/m_p);
 zeta= c_p/2*sqrt(k_p*m_p);
-h_p = 1;
-h_d = 1;
-h_i = 1; 
-% c_p1 = 0;
-% d_d = 2*zeta*w_n*m_p;
-% d_p = (w_n)^2*m_p - k_p;
-% coeff= 0;
+h_p = 2*zeta*w_n*m_p - k_p;
+h_d = m_p;
+h_i = m_p*(w_n)^2; 
+
 % d_d_mat=[0.01 0.1 1 10 100  ];
 % d_p_mat=[0.01 0.1 1 10 100  ];
 % for l1=1:length(d_d_mat)
@@ -27,10 +24,7 @@ h_i = 1;
 % for d_d=0:0.2:1
 %     for d_p=0:0.2:1
 % coeff=coeff +1;    
-% H = tf([0,2*zeta*w_n,w_n^2],[1,2*zeta*w_n,w_n^2]);
-% d_d = 1;
-% d_d= 2*m_p*w_n; %crtically damped
-% d_p = 0;
+
 % G = tf([0,0,k_p],[m_p,d_d,k_p+d_p]);
 M = tf([0,k_p,0],[m_p,h_d,(k_p+h_p),h_i]);
 bode(M)
@@ -42,8 +36,8 @@ bode(M)
 % hold on;
 
 % impulse(H*0.05,1) % impulse excitation
-% w_calc= sqrt((k_p+d_p)/m_p);
-% zeta_calc = d_d / 2*m_p*w_n;
+zeta_calc = (k_p+h_p)/(2*w_n*m_p);
+w_calc = (k_p+h_p)/(2*zeta*m_p);
 % utsav(1,coeff)=d_d;
 % utsav(2,coeff)=d_p;
 %  end
