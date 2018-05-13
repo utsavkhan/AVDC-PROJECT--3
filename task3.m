@@ -29,10 +29,10 @@ h_i = m_p*(w_n)^2;
 M = tf([0,k_p,0],[m_p,h_d,(k_p+h_p),h_i]);
 bode(M)
 % figure(1)
-% impulse(G*0.05) % impulse excitation
+% impulse(M*0.05) % impulse excitation
 % hold on;
 % figure(2)
-% lsim(G,excitation_sin,t) % sine excitation
+% lsim(M,excitation_sin,t) % sine excitation
 % hold on;
 
 % impulse(H*0.05,1) % impulse excitation
