@@ -10,7 +10,7 @@ m_p = 0.16; %kg
 c_p = 0.4; %Ns/m
 k_p = 6.32; %N/m
 w_n = sqrt(k_p/m_p);
-zeta= c_p/2*sqrt(k_p*m_p);
+zeta= c_p/(2*sqrt(k_p*m_p));
 h_p = 2*zeta*w_n*m_p - k_p;
 h_d = m_p;
 h_i = m_p*(w_n)^2; 
@@ -29,14 +29,15 @@ h_i = m_p*(w_n)^2;
 M = tf([0,k_p,0],[m_p,h_d,(k_p+h_p),h_i]);
 bode(M)
 % figure(1)
-% impulse(G*0.05) % impulse excitation
+% impulse(M*0.05) % impulse excitation
 % hold on;
 % figure(2)
-% lsim(G,excitation_sin,t) % sine excitation
+% lsim(M,excitation_sin,t) % sine excitation
 % hold on;
 
 % impulse(H*0.05,1) % impulse excitation
-zeta_calc = (k+h_p)/2
+zeta_calc = (k_p+h_p)/(2*w_n*m_p);
+w_calc = (k_p+h_p)/(2*zeta*m_p);
 % utsav(1,coeff)=d_d;
 % utsav(2,coeff)=d_p;
 %  end
