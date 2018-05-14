@@ -31,11 +31,8 @@ impulse(H*0.05,1) % impulse excitation
 
 w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
-Hfreqdomain = freqresp(H,w);
-H = abs(Hfreqdomain(:,:,1));
-PSD = H.^2.*PSD;
-
-semilogy(w,PSD)
+Hfreqdomain = freqresp(H)
+freqresp(H,PSD,w)
 
 
 %[timeseries, time] = TimeseriesFromPSD(PSD, 10, 10);
