@@ -5,8 +5,8 @@ c_p = 2*sqrt(k_p*m_p); %Ns/m, 0.4 originally
 c_p1 = 0;
 
 w_n = sqrt(k_p/m_p);
-zeta = c_p/2*sqrt(k_p*m_p)
-zeta1 = c_p1/2*sqrt(k_p*m_p);
+zeta = c_p/(2*sqrt(k_p*m_p));
+zeta1 = c_p1/(2*sqrt(k_p*m_p));
 %%TASK 1.3
 H = tf([0,2*zeta*w_n,w_n^2],[1,2*zeta*w_n,w_n^2]);
 H1 = tf([0,2*zeta1*w_n,w_n^2],[1,2*zeta1*w_n,w_n^2]);
@@ -20,8 +20,8 @@ bode(H,H1);
 t = 0:0.01:10;
 excitation_sin = 0.05*sin(3*t);
 
-figure()
-plot(t,excitation_sin)
+% figure()
+% plot(t,excitation_sin)
 
 figure()
 lsim(H,excitation_sin,t) % sine excitation
