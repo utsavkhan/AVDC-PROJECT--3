@@ -1,7 +1,7 @@
 %%TASK 1.1
 m_p = 0.16; %kg
 k_p = 6.32; %N/m
-c_p = 2*sqrt(k_p*m_p); %Ns/m, 0.4 originally
+c_p = 0.4; %Ns/m, 0.4 originally
 c_p1 = 0;
 
 w_n = sqrt(k_p/m_p);
