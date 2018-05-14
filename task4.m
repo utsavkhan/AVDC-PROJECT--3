@@ -21,14 +21,33 @@ coeff=coeff +1;
 N = tf([0,0,k_p],[m_p,T,k_p]);
 % bode(N);
 % hold on;
-figure(1)
-impulse(N*0.05) % impulse excitation
-hold on;
-figure(2)
-lsim(N,excitation_sin,t) % sine excitation
-hold on;
+%% sine excitation
+t = 0:0.01:10;
+excitation_sin = 0.05*sin(3*t);
 
-% impulse(H*0.05,1) % impulse excitation
+% figure()
+% plot(t,excitation_sin)
+
+figure()
+lsim(H,excitation_sin,t) % sine excitation
+ %% Impulse
+stepinput = 0.05*ones([1 length(t)]);
+for i = 101:length(t)
+   stepinput(i) = 0; 
+end
+
+figure()
+lsim(H,stepinput,t) % impulse excitation
+
+ %%PSD
+w = 0:25;
+PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+Hfreqdomain = freqresp(H,w);
+H = abs(Hfreqdomain(:))';
+PSD = H.^2.*PSD;
+
+semilogy(w,PSD)
+
  zeta_calc(coeff) = T/(2*w_n*m_p);
  w_calc(coeff) = T/(2*zeta_calc(coeff)*m_p);
 utsav(1,coeff)=T;
