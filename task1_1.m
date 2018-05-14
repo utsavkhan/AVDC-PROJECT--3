@@ -16,7 +16,7 @@ bode(H,H1);
 
 
 %% task 1.3
-
+%% sine excitation
 t = 0:0.01:10;
 excitation_sin = 0.05*sin(3*t);
 
@@ -25,7 +25,7 @@ excitation_sin = 0.05*sin(3*t);
 
 figure()
 lsim(H,excitation_sin,t) % sine excitation
-
+ %% Impulse
 stepinput = 0.05*ones([1 length(t)]);
 for i = 101:length(t)
    stepinput(i) = 0; 
@@ -34,14 +34,14 @@ end
 figure()
 lsim(H,stepinput,t) % impulse excitation
 
+ %%PSD
+w = 0:25;
+PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+Hfreqdomain = freqresp(H,w);
+H = abs(Hfreqdomain(:))';
+PSD = H.^2.*PSD;
 
-% w = 0:25;
-% PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
-% Hfreqdomain = freqresp(H,w);
-% H = abs(Hfreqdomain(:));
-% PSD = H.^2.*PSD;
-% 
-% semilogy(w,PSD)
+semilogy(w,PSD)
 
 
 %[timeseries, time] = TimeseriesFromPSD(PSD, 10, 10);
