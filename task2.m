@@ -38,7 +38,7 @@ excitation_sin = 0.05*sin(3*t);
 % plot(t,excitation_sin)
 
 figure()
-lsim(H,excitation_sin,t) % sine excitation
+lsim(G,excitation_sin,t) % sine excitation
 
  %% Impulse
 stepinput = 0.05*ones([1 length(t)]);
@@ -47,18 +47,18 @@ for i = 101:length(t)
 end
 
 figure()
-lsim(H,stepinput,t) % impulse excitation
+lsim(G,stepinput,t) % impulse excitation
 
  %%PSD
 w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
-Hfreqdomain = freqresp(H,w);
-H = abs(Hfreqdomain(:))';
-PSD = H.^2.*PSD;
+Hfreqdomain = freqresp(G,w);
+G = abs(Hfreqdomain(:))';
+PSD = G.^2.*PSD;
 
 semilogy(w,PSD)
 
-% impulse(H*0.05,1) % impulse excitation
+
 w_calc= sqrt((k_p+d_p)/m_p);
 zeta_calc = d_d / (2*m_p*w_n);
 % utsav(1,coeff)=d_d;
