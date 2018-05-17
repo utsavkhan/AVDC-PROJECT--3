@@ -17,14 +17,15 @@ kp = 6.32;
 % sys = ss(A,B,C,D);
 
 s = tf('s');
-H = tf(-kp-cp*s,ks+cs*s+((ks+cs*s+ms*s^2)/(ks+cs*s))*(-ks-cs*s-kp-cp*s-mp*s^2));
+H = (-kp-cp*s)/(ks+cs*s+((ks+cs*s+ms*s^2)/(ks+cs*s))*(-ks-cs*s-kp-cp*s-mp*s^2));
 % H = tf(cs*cp*s^2+kp*cs*s+cp*ks*s+ks*kp,(ms*s^2+cs*s+ks)*(mp*s^2+cp*s+kp));
 
 
 % pole(H)
 % 
 % bode(H)
-
+% 
+% step(H)
 
 %% sine excitation
 t = 0:0.01:10;
