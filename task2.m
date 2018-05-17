@@ -23,8 +23,8 @@ coeff= 0;
 %     for d_p=0:0.2:1
 % coeff=coeff +1;    
 % H = tf([0,2*zeta*w_n,w_n^2],[1,2*zeta*w_n,w_n^2]);
-d_d = 1;
-% d_d= 2*m_p*w_n; %crtically damped
+% d_d = 1;
+d_d= 2*m_p*w_n; %crtically damped
 d_p = 0;
 G = tf([0,0,k_p],[m_p,d_d,k_p+d_p]);
 % bode(G)
