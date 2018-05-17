@@ -3,8 +3,6 @@ clear all;
 % close all;
 
 %%task 2
-t = 1:0.01:10;
-excitation_sin = 0.05*sin(3*t);
 
 m_p = 0.16; %kg
 c_p = 0.4; %Ns/m
@@ -37,18 +35,18 @@ excitation_sin = 0.05*sin(3*t);
 % figure()
 % plot(t,excitation_sin)
 
-figure()
+figure(1)
 lsim(G,excitation_sin,t) % sine excitation
-
+hold on;
  %% Impulse
 stepinput = 0.05*ones([1 length(t)]);
 for i = 101:length(t)
    stepinput(i) = 0; 
 end
 
-figure()
+figure(2)
 lsim(G,stepinput,t) % impulse excitation
-
+hold on;
  %%PSD
 w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
@@ -56,11 +54,13 @@ Hfreqdomain = freqresp(G,w);
 G = abs(Hfreqdomain(:))';
 PSD = G.^2.*PSD;
 
+figure(3)
 semilogy(w,PSD)
-
-
-w_calc= sqrt((k_p+d_p)/m_p);
-zeta_calc = d_d / (2*m_p*w_n);
+hold on;
+% 
+% 
+% w_calc= sqrt((k_p+d_p)/m_p);
+% zeta_calc = d_d / (2*m_p*w_n);
 % utsav(1,coeff)=d_d;
 % utsav(2,coeff)=d_p;
 %  end

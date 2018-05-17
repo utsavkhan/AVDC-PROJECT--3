@@ -48,9 +48,9 @@ PSD = N.^2.*PSD;
 figure(3)
 semilogy(w,PSD)
 hold on
-
- zeta_calc(coeff) = T/(2*w_n*m_p);
- w_calc(coeff) = T/(2*zeta_calc(coeff)*m_p);
-% utsav(1,coeff)=T;
-%  end
-% end
+% 
+%  zeta_calc(coeff) = T/(2*w_n*m_p);
+%  w_calc(coeff) = T/(2*zeta_calc(coeff)*m_p);
+% % utsav(1,coeff)=T;
+% %  end
+% % end
