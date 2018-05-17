@@ -21,6 +21,39 @@ H = tf(-kp-cp*s,ks+cs*s+((ks+cs*s+ms*s^2)/(ks+cs*s))*(-ks-cs*s-kp-cp*s-mp*s^2));
 % H = tf(cs*cp*s^2+kp*cs*s+cp*ks*s+ks*kp,(ms*s^2+cs*s+ks)*(mp*s^2+cp*s+kp));
 
 
-pole(H)
+% pole(H)
+% 
+% bode(H)
 
-bode(H)
+
+%% sine excitation
+t = 0:0.01:10;
+excitation_sin = 0.05*sin(3*t);
+
+% figure()
+% plot(t,excitation_sin)
+
+figure(1)
+lsim(H,excitation_sin,t) % sine excitation
+hold on;
+
+%% Impulse
+stepinput = 0.05*ones([1 length(t)]);
+for i = 101:length(t)
+   stepinput(i) = 0; 
+end
+
+figure(2)
+lsim(H,stepinput,t) % impulse excitation
+hold on;
+
+%% PSD
+w = 0:25;
+PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+Hfreqdomain = freqresp(H,w);
+H = abs(Hfreqdomain(:))';
+PSD = H.^2.*PSD;
+
+figure(3)
+semilogy(w,PSD)
+hold on
