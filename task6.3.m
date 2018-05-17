@@ -1,6 +1,6 @@
 %% task 6
 
-clear all
+% clear all
 
 c_s = 0.05;
 m_s = 0.16;
