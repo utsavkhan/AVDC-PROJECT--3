@@ -25,6 +25,7 @@ pole(H)
 
 figure(1)
 bode(H)
+
 % 
 % step(H)
 
