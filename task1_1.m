@@ -3,7 +3,7 @@ clear all;
 
 %%TASK 1.1
 m_p = 0.16; %kg
-c_p = 0.4; %Ns/m
+c_p = 3; %Ns/m
 k_p = 6.32; %N/m
 c_p1 = 0;
 
