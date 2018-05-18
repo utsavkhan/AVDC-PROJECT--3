@@ -17,7 +17,7 @@ D=[0 0 0 0;0 0 0 0;0 0 0 0;0 0 0 0];
 % pitch=tf(num(3,:),den);
 % bode(bounce,pitch);
 
-sim('task82')
+sim('task8_2')
 
 figure(1)
 plot(simout.Time, simout.Data(:,1));
