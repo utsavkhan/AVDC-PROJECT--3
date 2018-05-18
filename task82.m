@@ -1,8 +1,9 @@
 clear all;
+
 m=22000;
 j=700000;
-c1=0;%40000;
-c2=0;%40000;
+c1=40000;
+c2=40000;
 k1=600000;
 k2=600000;
 l1=6;
@@ -26,3 +27,9 @@ hold on;
 plot(simout1.Time, simout1.Data(:,1));
 hold on;
 
+figure(2)
+plot(simout2.Time, simout2.Data(:,1));
+hold on;
+% end
+plot(simout1.Time, simout1.Data(:,1));
+hold on;
