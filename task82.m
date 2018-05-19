@@ -26,6 +26,9 @@ hold on;
 % end
 plot(simout1.Time, simout1.Data(:,1));
 hold on;
+xlabel('Time(sec)');
+ylabel('Amplitude');
+legend('Output','Input');
 
 figure(2)
 plot(simout2.Time, simout2.Data(:,1));
@@ -33,3 +36,7 @@ hold on;
 % end
 plot(simout1.Time, simout1.Data(:,1));
 hold on;
+xlabel('Time(sec)');
+ylabel('Amplitude');
+legend('Output','Input');
+
