@@ -11,13 +11,15 @@ w_n = sqrt(k_p/m_p);
 zeta= c_p/(2*sqrt(k_p*m_p));
 % T=2*zeta*w_n*m_p;
 % for T = 2:0.01:3;
-T= 2.01; %optimised T
+T= 1; %optimised T
 
 coeff=coeff +1;    
 
 % G = tf([0,0,k_p],[m_p,d_d,k_p+d_p]);
 N = tf([0,0,k_p],[m_p,T,k_p]);
-% bode(N);
+figure(4)
+bode(N);
+
 % hold on;
 %% sine excitation
 t = 0:0.01:10;
