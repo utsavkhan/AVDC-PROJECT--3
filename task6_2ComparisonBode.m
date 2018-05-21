@@ -10,9 +10,38 @@ zeta1 = c_p1/(2*sqrt(k_p*m_p));
 %%TASK 1.3
 H0 = tf([0,2*zeta*w_n,w_n^2],[1,2*zeta*w_n,w_n^2]);
 H1 = tf([0,2*zeta1*w_n,w_n^2],[1,2*zeta1*w_n,w_n^2]);
-% fr= 0:0.01:100;
-% [mag,phase,wout] = bode(H1,fr);
-% bode(H,H1);
+
+
+% sine excitation
+t = 0:0.01:30;
+excitation_sin = 0.05*sin(3*t);
+
+figure(1)
+lsim(H0,excitation_sin,t) % sine excitation
+hold on;
+
+%% Impulse
+stepinput = 0.05*ones([1 length(t)]);
+for i = 101:length(t)
+   stepinput(i) = 0; 
+end
+
+figure(2)
+lsim(H0,stepinput,t) % impulse excitation
+hold on;
+
+%% PSD
+w = 0:0.01:25;
+PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+H0freqdomain = freqresp(H0,w);
+H0 = abs(H0freqdomain(:))';
+PSD = H0.^2.*PSD;
+
+figure(3)
+semilogy(w,PSD);
+hold on;
+xlabel('Frequency (Hz)')
+ylabel('Amplitude')
 
 cs = 0.05;
 ms = 0.16;
@@ -32,5 +61,33 @@ s = tf('s');
 H = (-kp-cp*s)/(ks+cs*s+((ks+cs*s+ms*s^2)/(ks+cs*s))*(-ks-cs*s-kp-cp*s-mp*s^2));
 % H = tf(cs*cp*s^2+kp*cs*s+cp*ks*s+ks*kp,(ms*s^2+cs*s+ks)*(mp*s^2+cp*s+kp));
 
-bode(H0,H)
-legend('Single DoF System','Two DoF System')
+% sine excitation
+t = 0:0.01:30;
+excitation_sin = 0.05*sin(3*t);
+
+figure(1)
+lsim(H,excitation_sin,t) % sine excitation
+hold on;
+
+%% Impulse
+stepinput = 0.05*ones([1 length(t)]);
+for i = 101:length(t)
+   stepinput(i) = 0; 
+end
+
+figure(2)
+lsim(H,stepinput,t) % impulse excitation
+hold on;
+
+%% PSD
+w = 0:0.01:25;
+PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+Hfreqdomain = freqresp(H,w);
+H = abs(Hfreqdomain(:))';
+PSD = H.^2.*PSD;
+
+figure(3)
+semilogy(w,PSD);
+hold on;
+xlabel('Frequency (Hz)')
+ylabel('Amplitude')
