@@ -10,7 +10,7 @@ k_p = 6.32; %N/m
 w_n = sqrt(k_p/m_p);
 zeta= c_p/(2*sqrt(k_p*m_p));
 % T=2*zeta*w_n*m_p;
-% for T = 2:0.01:3;
+% for T = 0:0.01:3;
 T= 1; %optimised T
 
 coeff=coeff +1;    
@@ -31,6 +31,7 @@ excitation_sin = 0.05*sin(3*t);
  figure(1)
 lsim(N,excitation_sin,t) % sine excitation
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
  %% Impulse
 stepinput = 0.05*ones([1 length(t)]);
 for i = 101:length(t)
@@ -40,6 +41,7 @@ end
 figure(2)
 lsim(N,stepinput,t) % impulse excitation
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
  %%PSD
 w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
@@ -50,6 +52,7 @@ PSD = N.^2.*PSD;
 figure(3)
 semilogy(w,PSD)
 hold on
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 % 
 %  zeta_calc(coeff) = T/(2*w_n*m_p);
 %  w_calc(coeff) = T/(2*zeta_calc(coeff)*m_p);

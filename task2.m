@@ -23,8 +23,8 @@ coeff= 0;
 %     for d_p=0:0.2:1
 % coeff=coeff +1;    
 % H = tf([0,2*zeta*w_n,w_n^2],[1,2*zeta*w_n,w_n^2]);
-% d_d = 1;
-d_d= 2*m_p*w_n; %crtically damped
+d_d = 1;
+% d_d= 2*m_p*w_n; %crtically damped
 d_p = 0;
 G = tf([0,0,k_p],[m_p,d_d,k_p+d_p]);
 % bode(G)
@@ -38,6 +38,7 @@ excitation_sin = 0.05*sin(3*t);
 figure(1)
 lsim(G,excitation_sin,t) % sine excitation
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
  %% Impulse
 stepinput = 0.05*ones([1 length(t)]);
 for i = 101:length(t)
@@ -47,6 +48,7 @@ end
 figure(2)
 lsim(G,stepinput,t) % impulse excitation
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
  %%PSD
 w = 0:25;
 PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
@@ -57,6 +59,7 @@ PSD = G.^2.*PSD;
 figure(3)
 semilogy(w,PSD)
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 % 
 % 
 % w_calc= sqrt((k_p+d_p)/m_p);

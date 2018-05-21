@@ -39,6 +39,7 @@ excitation_sin = 0.05*sin(3*t);
 figure(1)
 lsim(M,excitation_sin,t); % sine excitation
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 
  %% Impulse
 stepinput = 0.05*ones([1 length(t)]);
@@ -49,6 +50,7 @@ end
 figure(2)
 lsim(M,stepinput,t);
 hold on% impulse excitation
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 % w_calc(coeff)= h_p/(2*zeta*a);
 
  %%PSD
@@ -60,6 +62,7 @@ PSD = M.^2.*PSD;
 figure(3)
 semilogy(w,PSD);
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 % end
 % zeta_calc = (k_p+h_p)/(2*w_n*m_p);
 % w_calc = (k_p+h_p)/(2*zeta*m_p);
