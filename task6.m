@@ -1,6 +1,6 @@
 %% task 6
 
-clear all
+%clear all
 
 c_s = 0.05;
 m_s = 0.16;
@@ -41,38 +41,39 @@ H = (-k_p-c_p*s)/(k_s+c_s*s+((k_s+c_s*s+m_s*s^2)/(k_s+c_s*s))*(-k_s-c_s*s-k_p-c_
 
 % figure(1)
 % bode(H)
+% hold on;
 
 % 
 % step(H)
 
-%% sine excitation
-t = 0:0.01:10;
-excitation_sin = 0.05*sin(3*t);
-
-figure(1)
-lsim(H,excitation_sin,t) % sine excitation
-hold on;
-
-%% Impulse
-stepinput = 0.05*ones([1 length(t)]);
-for i = 101:length(t)
-   stepinput(i) = 0; 
-end
-
-figure(2)
-lsim(H,stepinput,t) % impulse excitation
-hold on;
-
-%% PSD
-w = 0:0.01:25;
-PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
-Hfreqdomain = freqresp(H,w);
-H = abs(Hfreqdomain(:))';
-PSD = H.^2.*PSD;
-
-figure(3)
-semilogy(w,PSD);
-hold on;
-xlabel('Frequency (Hz)')
-ylabel('Amplitude')
+% %% sine excitation
+% t = 0:0.01:10;
+% excitation_sin = 0.05*sin(3*t);
+% 
+% figure(1)
+% lsim(H,excitation_sin,t) % sine excitation
+% hold on;
+% 
+% %% Impulse
+% stepinput = 0.05*ones([1 length(t)]);
+% for i = 101:length(t)
+%    stepinput(i) = 0; 
+% end
+% 
+% figure(2)
+% lsim(H,stepinput,t) % impulse excitation
+% hold on;
+% 
+% %% PSD
+% w = 0:0.01:25;
+% PSD = (4.028e-7)./((2.88e-4)+(0.68*w.^2)+w.^4);
+% Hfreqdomain = freqresp(H,w);
+% H = abs(Hfreqdomain(:))';
+% PSD = H.^2.*PSD;
+% 
+% figure(3)
+% semilogy(w,PSD);
+% hold on;
+% xlabel('Frequency (Hz)')
+% ylabel('Amplitude')
 
