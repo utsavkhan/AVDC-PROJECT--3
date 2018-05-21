@@ -70,3 +70,6 @@ legend('Input','Active System','Passive System');
 figure(2)
 plot(simout2.Time, simout2.Data(:,1));
 hold on;
+xlabel('Time(sec)');
+ylabel('Amplitude');
+legend('Input','Active System','Passive System');
