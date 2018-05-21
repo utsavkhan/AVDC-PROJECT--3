@@ -33,7 +33,6 @@ hold on;
 set(findall(gcf,'type','line'), 'LineWidth', 2);
 plot(simout2.Time, simout2.Data(:,1));
 hold on;
-set(findall(gcf,'type','line'), 'LineWidth', 2);
 
 
 % 
