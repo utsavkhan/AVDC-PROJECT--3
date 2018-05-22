@@ -36,8 +36,8 @@ Wa2=Wa1;
 
 %For penalizing bounce and pitch motions
 eps=1;
-wnb=7.39;            %Find the right equation or value for wnb
-wnchi=7.86;          %Find the right equation or value for wnchi
+wnb=7.38;            %Find the right equation or value for wnb
+wnchi=7.9;          %Find the right equation or value for wnchi
 s1b=-eps+1i*sqrt(wnb^2-eps^2);
 s2b=-eps-1i*sqrt(wnb^2-eps^2);
 s1chi=-eps+1i*sqrt(wnchi^2-eps^2);
