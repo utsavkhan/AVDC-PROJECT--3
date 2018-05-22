@@ -9,19 +9,16 @@ k1=600000;
 k2=600000;
 l1=6;
 l2=6;
-<<<<<<< HEAD
-cz=10e5;
-cx=20e4;
-=======
-cz=20e4;
-cx=20e5;
+
+cz=20.5e4;
+cx=50e5;
 
 %%Excitation 
 
 excite=1; %%Impulse
 % excite=2; %%sine 1 Hz
 % excite=3; %%sine 8 Hz
->>>>>>> 96ae4b36167d979b7972172ffcb8461eae9415d1
+
 
 %% active
 
