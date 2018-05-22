@@ -57,7 +57,7 @@ nmeas = 2;%Number of measured outputs provided to the controller
 Pe=minreal(Pe);%This syntax cancels pole-zero pairs in transfer
 %functions. The output system has minimal order and the same response
 %characteristics as the original model.
-[K,Pec,gamma,info]=hinfsyn(Pe,nmeas,ncont,'method','lmi'); % for working with the error
+[K,Pec,gamma,info]=hinfsyn(Pe,nmeas,ncont,'method','lmi'); % for working with the error - determines optimal K by minimising infinity norm
 [Ainf, Binf, Cinf, Dinf]=ssdata(K);
 
 %Now use the controller K in your simulation
