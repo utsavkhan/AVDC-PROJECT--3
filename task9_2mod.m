@@ -9,14 +9,14 @@ k1=600000;
 k2=600000;
 l1=6;
 l2=6;
-cz=20e4;
-cx=20e5;
+cz=20.5e4;
+cx=50e5;
 
 %%Excitation 
 
-excite=1; %%Impulse
+% excite=1; %%Impulse
 % excite=2; %%sine 1 Hz
-% excite=3; %%sine 8 Hz
+excite=3; %%sine 8 Hz
 
 %% active
 
@@ -33,14 +33,18 @@ sim('task9_2modified')
 figure(1)
 plot(simout1.Time, simout1.Data(:,1));
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 plot(simout.Time, simout.Data(:,1));
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 
 figure(2)
 plot(simout1.Time, simout1.Data(:,1));
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 plot(simout2.Time, simout2.Data(:,1));
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 
 %% passive
 
@@ -63,6 +67,7 @@ sim('task9_2p')
 figure(1)
 plot(simout.Time, simout.Data(:,1));
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 xlabel('Time(sec)');
 ylabel('Amplitude');
 legend('Input','Active System','Passive System');
@@ -70,6 +75,7 @@ legend('Input','Active System','Passive System');
 figure(2)
 plot(simout2.Time, simout2.Data(:,1));
 hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 xlabel('Time(sec)');
 ylabel('Amplitude');
 legend('Input','Active System','Passive System');
