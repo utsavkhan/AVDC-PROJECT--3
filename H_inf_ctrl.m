@@ -1,11 +1,11 @@
 %% This is a Matlab file for designing H_infinity controller (assignment 3
 %% of SD2231)
 clear all
-close all;
+% close all;
 s=tf('s');
 
 % system parameters
-m=22000;   %kg
+m=22000;%22000;   %kg
 j=700e3;   %kgm^2
 c=40e3;    %Ns/m
 k=2*300e3; %N/m
@@ -22,69 +22,69 @@ cx=50e5;
 
 %%Excitation 
 
-excite=1; %%Impulse
+% excite=1; %%Impulse
 % excite=2; %%sine 1 Hz
-% excite=3; %%sine 8 Hz
+excite=3; %%sine 8 Hz
 
-% %% Passive System
-% A=[0 1 0 0;
-%     (-k1-k2)/m (-c1-c2)/m (k1*l1-k2*l2)/m (l1*c1-l2*c2)/m;
-%     0 0 0 1;
-%     (k1*l1-k2*l2)/j (c1*l1-c2*l2)/j (-k1*(l1^2)-k2*(l2^2))/j (-c1*(l1^2)-c2*(l2^2))/j];
-% B=[0 0 0 0;
-%     k1/m c1/m k2/m c2/m;
-%     0 0 0 0;
-%     -k1*l1/j -c1*l1/j k2*l2/j c2*l2/j];
-% C=[1 0 0 0;0 1 0 0;0 0 1 0;0 0 0 1];
-% D=[0 0 0 0;0 0 0 0;0 0 0 0;0 0 0 0];
-% 
-% 
-% sim('task9_2p')
-% 
-% figure(1)
-% plot(simout.Time, simout.Data(:,1));
-% hold on;
-% set(findall(gcf,'type','line'), 'LineWidth', 2);
-% plot(simout1.Time, simout1.Data(:,1));
-% hold on;
-% set(findall(gcf,'type','line'), 'LineWidth', 2);
-% xlabel('Time(sec)');
-% ylabel('Amplitude');
-% % legend('Active System','Input','Passive System');
-% 
-% figure(2)
-% plot(simout2.Time, simout2.Data(:,1));
-% hold on;
-% set(findall(gcf,'type','line'), 'LineWidth', 2);
-% plot(simout1.Time, simout1.Data(:,1));
-% hold on;
-% set(findall(gcf,'type','line'), 'LineWidth', 2);
-% xlabel('Time(sec)');
-% ylabel('Amplitude');
-% % legend('Active System','Input','Passive System');
-% 
-% %% Active Skyhook
-% clear A B C D simout simout1 simout2
-% 
-% A=[0 1 0 0;
-%     (-k1-k2)/m 0 (k1*l1-k2*l2)/m 0;
-%     0 0 0 1;
-%     (k1*l1-k2*l2)/j 0 (-k1*(l1^2)-k2*(l2^2))/j 0];
-% B=[0 0 0 0;k1/m k2/m 1/m 1/m;0 0 0 0;-k1*l1/j k2*l2/j -l1/j l2/j];
-% C=eye(4);
-% D=zeros(4);
-% 
-% sim('task9_2modified')
-% 
-% figure(1)
-% plot(simout.Time, simout.Data(:,1));
-% hold on;
-% set(findall(gcf,'type','line'), 'LineWidth', 2);
-% 
-% figure(2)
-% plot(simout2.Time, simout2.Data(:,1));
-% hold on;
-% set(findall(gcf,'type','line'), 'LineWidth', 2);
+%% Passive System
+A=[0 1 0 0;
+    (-k1-k2)/m (-c1-c2)/m (k1*l1-k2*l2)/m (l1*c1-l2*c2)/m;
+    0 0 0 1;
+    (k1*l1-k2*l2)/j (c1*l1-c2*l2)/j (-k1*(l1^2)-k2*(l2^2))/j (-c1*(l1^2)-c2*(l2^2))/j];
+B=[0 0 0 0;
+    k1/m c1/m k2/m c2/m;
+    0 0 0 0;
+    -k1*l1/j -c1*l1/j k2*l2/j c2*l2/j];
+C=[1 0 0 0;0 1 0 0;0 0 1 0;0 0 0 1];
+D=[0 0 0 0;0 0 0 0;0 0 0 0;0 0 0 0];
+
+
+sim('task9_2p')
+
+figure(1)
+plot(simout.Time, simout.Data(:,1));
+hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
+plot(simout1.Time, simout1.Data(:,1));
+hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
+xlabel('Time(sec)');
+ylabel('Amplitude');
+% legend('Active System','Input','Passive System');
+
+figure(2)
+plot(simout2.Time, simout2.Data(:,1));
+hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
+plot(simout1.Time, simout1.Data(:,1));
+hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
+xlabel('Time(sec)');
+ylabel('Amplitude');
+% legend('Active System','Input','Passive System');
+
+%% Active Skyhook
+clear A B C D simout simout1 simout2
+
+A=[0 1 0 0;
+    (-k1-k2)/m 0 (k1*l1-k2*l2)/m 0;
+    0 0 0 1;
+    (k1*l1-k2*l2)/j 0 (-k1*(l1^2)-k2*(l2^2))/j 0];
+B=[0 0 0 0;k1/m k2/m 1/m 1/m;0 0 0 0;-k1*l1/j k2*l2/j -l1/j l2/j];
+C=eye(4);
+D=zeros(4);
+
+sim('task9_2modified')
+
+figure(1)
+plot(simout.Time, simout.Data(:,1));
+hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
+
+figure(2)
+plot(simout2.Time, simout2.Data(:,1));
+hold on;
+set(findall(gcf,'type','line'), 'LineWidth', 2);
 
 % for kb=1000:1000:6000
 %     for kchi=35000:1000:36000 
@@ -130,8 +130,8 @@ s2b=-eps-1i*sqrt(wnb^2-eps^2);
 s1chi=-eps+1i*sqrt(wnchi^2-eps^2);
 s2chi=-eps-1i*sqrt(wnchi^2-eps^2);
 
-kb=input('Enter the gain for kb = '); 
-kchi=input('Enter the gain for kchi = ');
+kb=4000;%input('Enter the gain for kb = '); 
+kchi=35000;%input('Enter the gain for kchi = ');
 Wb=(kb*s1b*s2b)/((s-s1b)*(s-s2b));
 Wchi=(kchi*s1chi*s2chi)/((s-s1chi)*(s-s2chi));
 
@@ -157,21 +157,28 @@ plot(simout3.Time, simout3.Data(:,1));
 hold on;
 set(findall(gcf,'type','line'), 'LineWidth', 2);
 
-plot(simout5.Time, simout5.Data(:,1));
-hold on;
-set(findall(gcf,'type','line'), 'LineWidth', 2);
-% legend('Passive','Input','Skyhook','H-inf');
+% plot(simout5.Time, simout5.Data(:,1));
+% hold on;
+% set(findall(gcf,'type','line'), 'LineWidth', 2);
+legend('Passive','Input','Skyhook','H-inf');
 
 figure(2)
 plot(simout4.Time, simout4.Data(:,1));
 hold on;
 set(findall(gcf,'type','line'), 'LineWidth', 2);
 
-plot(simout5.Time, simout5.Data(:,1));
-hold on;
-set(findall(gcf,'type','line'), 'LineWidth', 2);
-% legend('Passive','Input','Skyhook','H-inf');
+% plot(simout5.Time, simout5.Data(:,1));
+% hold on;
+% set(findall(gcf,'type','line'), 'LineWidth', 2);
+legend('Passive','Input','Skyhook','H-inf');
 
+% figure(3)
+% plot(simout6.Time, simout6.Data(:,1));
+% hold on;
+% set(findall(gcf,'type','line'), 'LineWidth', 2);
+% plot(simout6.Time, simout6.Data(:,2));
+% hold on;
+% set(findall(gcf,'type','line'), 'LineWidth', 2);
 % clearvars -except kb;
 %     end
 % end
